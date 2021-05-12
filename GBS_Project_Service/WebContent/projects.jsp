@@ -14,7 +14,7 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-6">
+			<div class="col-5">
 		
 				<h1>Projects Management</h1>
 				

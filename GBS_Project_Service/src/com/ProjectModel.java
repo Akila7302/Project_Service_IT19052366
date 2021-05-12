@@ -52,11 +52,13 @@ public class ProjectModel {
 			preparedStmt.execute();
 			con.close();
 			
-			output = "Inserted successfully";
+			String newprojects = readProjects();
+			output = "{\"status\":\"success\", \"data\": \"" +
+			newprojects + "\"}";
 		}
 		catch (Exception e) {
-			output = "Error while inserting the project.";
-			System.err.println(e.getMessage());
+			output = "{\"status\":\"error\", \"data\": \"Error while inserting the project.\"}";
+					System.err.println(e.getMessage());
 		}
 		return output;
 	}
@@ -87,7 +89,6 @@ public class ProjectModel {
 						"</tr>";
 			
 			String query = "select * from projects";
-			
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			
@@ -101,18 +102,17 @@ public class ProjectModel {
 				String project_cost = Double.toString(rs.getDouble("project_cost"));
 				
 				// Add into the html table
-				output += "<tr><td><input id=\"hidProjectIDUpdate\" name=\"hidProjectIDUpdate\" type=\"hidden\" value=\"" + project_id + "\">"
-						+ project_title + "</td>";
+				output += "<tr><td>" + project_title + "</td>";
 				output += "<td>" + p_description + "</td>";
 				output += "<td>" + inventor_name + "</td>";
 				output += "<td>" + delivery_time + "</td>";
 				output += "<td>" + project_cost + "</td>";
 				
 				// buttons
-				output += "<td><input name=\"btnUpdate\" type=\"button\" value=\"Update\" class=\"btnUpdate btn btn-secondary\"></td> "
-						+ "<td><form method=\"post\" action=\"projects.jsp\"> "
-						+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\" class=\"btn btn-danger\"> "
-						+ "<input name=\"hidProjectIDDelete\" type=\"hidden\" value=\"" + project_id + "\">" + "</form></td></tr>";
+				output += "<td><input name='btnUpdate' type='button' value='Update' "
+				+ "class='btnUpdate btn btn-secondary' data-projectid='" + project_id + "'></td>"
+				+ "<td><input name='btnRemove' type='button' value='Remove' "
+				+ "class='btnRemove btn btn-danger' data-projectid='" + project_id + "'></td></tr>";
 			}
 			
 			con.close();
@@ -157,11 +157,15 @@ public class ProjectModel {
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
-			output = "Updated successfully";
+			
+			String newprojects = readProjects();
+			output = "{\"status\":\"success\", \"data\": \"" +
+			newprojects + "\"}";
+			
 		}
 		catch (Exception e) {
-			output = "Error while updating the project.";
-			System.err.println(e.getMessage());
+			output = "{\"status\":\"error\", \"data\": \"Error while updating the project.\"}";
+					System.err.println(e.getMessage());
 		}
 		
 		return output;
@@ -191,11 +195,13 @@ public class ProjectModel {
 			preparedStmt.execute();
 			con.close();
 			
-			output = "Deleted successfully";
+			String newprojects = readProjects();
+			output = "{\"status\":\"success\", \"data\": \"" +
+			newprojects + "\"}";
 		}
 		catch (Exception e) {
-			output = "Error while deleting the project.";
-			System.err.println(e.getMessage());
+			output = "{\"status\":\"error\", \"data\": \"Error while deleting the project.\"}";
+					System.err.println(e.getMessage());
 		}
 			return output;
 		}
