@@ -101,19 +101,18 @@ public class ProjectModel {
 				String project_cost = Double.toString(rs.getDouble("project_cost"));
 				
 				// Add into the html table
-				output += "<tr><td>" + project_title + "</td>";
+				output += "<tr><td><input id=\"hidProjectIDUpdate\" name=\"hidProjectIDUpdate\" type=\"hidden\" value=\"" + project_id + "\">"
+						+ project_title + "</td>";
 				output += "<td>" + p_description + "</td>";
 				output += "<td>" + inventor_name + "</td>";
 				output += "<td>" + delivery_time + "</td>";
 				output += "<td>" + project_cost + "</td>";
 				
 				// buttons
-				output += "<td><input name='btnUpdate' type='button' value='Update' "
-						+ "class='btn btn-secondary'></td>"  
-						+ "<td><form method='post' action='projects.jsp'>" 
-						+ "<input name='btnRemove' type='submit' value='Remove'  class='btn btn-danger'>" 
-						+ "<input name='project_id' type='hidden' value='" + project_id
-						+ "'>" + "</form></td></tr>";
+				output += "<td><input name=\"btnUpdate\" type=\"button\" value=\"Update\" class=\"btnUpdate btn btn-secondary\"></td> "
+						+ "<td><form method=\"post\" action=\"projects.jsp\"> "
+						+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\" class=\"btn btn-danger\"> "
+						+ "<input name=\"hidProjectIDDelete\" type=\"hidden\" value=\"" + project_id + "\">" + "</form></td></tr>";
 			}
 			
 			con.close();
