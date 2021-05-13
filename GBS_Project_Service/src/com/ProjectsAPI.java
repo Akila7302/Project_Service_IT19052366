@@ -38,7 +38,8 @@ public class ProjectsAPI extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String output = projectObj.insertProject(request.getParameter("project_title"),
+		String output = projectObj.insertProject(
+				request.getParameter("project_title"),
 				request.getParameter("p_description"),
 				request.getParameter("inventor_name"),
 				request.getParameter("delivery_time"),

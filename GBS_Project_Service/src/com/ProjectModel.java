@@ -110,9 +110,9 @@ public class ProjectModel {
 				
 				// buttons
 				output += "<td><input name='btnUpdate' type='button' value='Update' "
-				+ "class='btnUpdate btn btn-secondary' data-projectid='" + project_id + "'></td>"
+				+ "class='btnUpdate btn btn-secondary' data-project_id='" + project_id + "'></td>"
 				+ "<td><input name='btnRemove' type='button' value='Remove' "
-				+ "class='btnRemove btn btn-danger' data-projectid='" + project_id + "'></td></tr>";
+				+ "class='btnRemove btn btn-danger' data-project_id='" + project_id + "'></td></tr>";
 			}
 			
 			con.close();

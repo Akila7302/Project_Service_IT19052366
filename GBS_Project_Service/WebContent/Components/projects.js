@@ -2,9 +2,9 @@ $(document).ready(function()
 {
 	if ($("#alertSuccess").text().trim() == "")
 	{
-	$("#alertSuccess").hide();
+		$("#alertSuccess").hide();
 	}
-	$("#alertError").hide();
+		$("#alertError").hide();
 });
 
 //SAVE ============================================
